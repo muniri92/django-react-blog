@@ -40,13 +40,12 @@ class Education(models.Model):
 	def __str__(self):
 		return self.institution
 
-
+ 
 @python_2_unicode_compatible
 class Work(models.Model):
 	""""""
 	company = models.CharField(max_length=100)
 	position = models.CharField(max_length=100)
-	description = models.CharField(max_length=1000)
 	start_date = models.DateTimeField('Start Date')
 	end_date = models.DateTimeField('End Date')
 
@@ -55,6 +54,18 @@ class Work(models.Model):
 		return self.company
 
 
+@python_2_unicode_compatible
+class WorkDesc(models.Model):
+	""""""
+	work = models.ForeignKey(Work, related_name='workdesc', on_delete=models.CASCADE)
+	job_description = models.CharField(max_length=750)
+
+	def __str__(self):
+		return self.job_description
+
+	def __unicode__(self):
+		return self.job_description
+	
 
 
 

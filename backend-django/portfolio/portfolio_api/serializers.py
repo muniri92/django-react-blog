@@ -16,8 +16,7 @@ class SkillSerializer(serializers.ModelSerializer):
 		fields = ('skill', 'image', 'proficieny')
 
 
-
- class EducationSerializer(serializers.ModelSerializer):
+class EducationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Education
@@ -25,8 +24,9 @@ class SkillSerializer(serializers.ModelSerializer):
 
 
 class WorkSerializer(serializers.ModelSerializer):
+	workdesc = serializers.StringRelatedField(many=True)
 
 	class Meta:
 		model = Work
-		fields = ('company', 'position', 'description', 'start_date', 'end_date')
+		fields = ('company', 'position', 'start_date', 'end_date', 'workdesc')
 
