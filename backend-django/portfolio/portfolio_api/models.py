@@ -5,7 +5,6 @@ import datetime
 
 PROFICIENCY = [('Proficient' ,'Proficient'), ('Intermediate', 'Intermediate'), ('Beginning', 'Beginning')]
 
-
 @python_2_unicode_compatible
 class About(models.Model):
 	""""""
@@ -18,27 +17,41 @@ class About(models.Model):
 
 
 @python_2_unicode_compatible
-class Skill(models.Model):
+class Education(models.Model):
 	""""""
-	skill = models.CharField(max_length=100)
-	image = models.URLField(max_length=500)
-	proficieny = models.CharField(max_length=20, choices=PROFICIENCY, default='Proficient')
+	institution = models.CharField(max_length=100)
+	degree = models.CharField(max_length=100, blank=True, default=None)
+	major = models.CharField(max_length=100, blank=True, default=None)
+	minor = models.CharField(max_length=250, blank=True, default=None)
+	certificate = models.CharField(max_length=250, blank=True, default=None)
+	start_date = models.DateField('Start Date')
+	end_date = models.DateField('End Date')
 
+
+	def __str__(self):
+		return self.institution
+
+
+@python_2_unicode_compatible
+class SkillSet(models.Model):
+	""""""
+	skill = models.CharField(max_length=50)
 
 	def __str__(self):
 		return self.skill
 
 
 @python_2_unicode_compatible
-class Education(models.Model):
-	institution = models.CharField(max_length=100)
-	degree = models.CharField(max_length=500)
-	start_date = models.DateTimeField('Start Date')
-	end_date = models.DateTimeField('End Date')
-
+class SkillType(models.Model):
+	""""""
+	skillset = models.ForeignKey(SkillSet, related_name='skilltype', on_delete=models.CASCADE)
+	skill = models.CharField(max_length=100)
 
 	def __str__(self):
-		return self.institution
+		return self.skill
+
+	def __unicode__(self):
+		return self.skill
 
  
 @python_2_unicode_compatible
@@ -46,8 +59,8 @@ class Work(models.Model):
 	""""""
 	company = models.CharField(max_length=100)
 	position = models.CharField(max_length=100)
-	start_date = models.DateTimeField('Start Date')
-	end_date = models.DateTimeField('End Date')
+	start_date = models.DateField('Start Date')
+	end_date = models.DateField('End Date')
 
 
 	def __str__(self):

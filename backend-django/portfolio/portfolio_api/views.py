@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import About, Skill, Education, Work
+from .models import About, SkillSet, Education, Work
 from .serializers import AboutSerializer, SkillSerializer, EducationSerializer, WorkSerializer
 
 
@@ -20,7 +20,7 @@ class AboutAPI(generics.ListAPIView):
 class SkillAPI(generics.ListAPIView):
 
 	serializer_class = SkillSerializer
-	queryset = Skill.objects.all()
+	queryset = SkillSet.objects.all()
 
 	def get_queryset(self):
 		queryset = super(SkillAPI, self).get_queryset()
