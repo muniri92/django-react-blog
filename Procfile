@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath backend-django/portfolio portfolio.wsgi
+web: gunicorn --pythonpath backend-django.portfolio portfolio.wsgi
