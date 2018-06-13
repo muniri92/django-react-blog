@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -83,15 +85,25 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'), 
-        'USER': os.environ.get('DB_USERNAME'), 
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+    'default':dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
+
+# postgresql://[user[:password]@][netloc][:port][/dbname]
+# 
+# postgresql://muniribrahim:password@localhost:5432/blog_db
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME'), 
+#         'USER': os.environ.get('DB_USERNAME'), 
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
