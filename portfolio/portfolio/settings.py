@@ -28,7 +28,7 @@ SECRET_KEY = ')vk2mr7k_+3!2i=e22c#rhw2f6q753)6w3m5l(_14ciuvujx)p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://djangoportfolioapi.herokuapp.com/']
 
 
 # Application definition
@@ -91,14 +91,14 @@ DATABASES = {
 }
 
 # postgresql://[user[:password]@][netloc][:port][/dbname]
-# 
+#
 # postgresql://muniribrahim:password@localhost:5432/blog_db
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('DB_NAME'), 
-#         'USER': os.environ.get('DB_USERNAME'), 
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USERNAME'),
 #         'PASSWORD': os.environ.get('DB_PASSWORD'),
 #         'HOST': '127.0.0.1',
 #         'PORT': '5432',
