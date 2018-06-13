@@ -1,4 +1,4 @@
-from .models import About, SkillSet, Work, Education
+from .models import About, SkillSet, Work, Education, Certificate
 from rest_framework import serializers
 
 
@@ -13,7 +13,14 @@ class EducationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Education
-		fields = ('institution', 'degree', 'major', 'certificate', 'start_date', 'end_date')
+		fields = ('institution', 'major', 'minor', 'certificate', 'start_date', 'end_date')
+
+
+class CertificateSerializer(serializers.ModelSerializer):
+	
+	class Meta:
+		model = Certificate
+		fields = ('institution', 'certificate', 'start_date', 'end_date')
 
 
 class SkillSerializer(serializers.ModelSerializer):
