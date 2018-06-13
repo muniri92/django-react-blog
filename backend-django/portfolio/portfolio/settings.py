@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8083',
+    'localhost:8080',
 )
 
 ROOT_URLCONF = 'portfolio.urls'

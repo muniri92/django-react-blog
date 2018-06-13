@@ -1,4 +1,4 @@
-from .models import About, Skill, Work, Education
+from .models import About, SkillSet, Work, Education, Certificate
 from rest_framework import serializers
 
 
@@ -9,18 +9,26 @@ class AboutSerializer(serializers.ModelSerializer):
 		fields = ('title', 'description')
 
 
-class SkillSerializer(serializers.ModelSerializer):
-
-	class Meta:
-		model = Skill
-		fields = ('skill', 'image', 'proficieny')
-
-
 class EducationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Education
-		fields = ('institution', 'degree', 'start_date', 'end_date')
+		fields = ('institution', 'major', 'minor', 'certificate', 'start_date', 'end_date')
+
+
+class CertificateSerializer(serializers.ModelSerializer):
+	
+	class Meta:
+		model = Certificate
+		fields = ('institution', 'certificate', 'start_date', 'end_date')
+
+
+class SkillSerializer(serializers.ModelSerializer):
+	skilltype = serializers.StringRelatedField(many=True)
+
+	class Meta:
+		model = SkillSet
+		fields = ('skill', 'skilltype')
 
 
 class WorkSerializer(serializers.ModelSerializer):
