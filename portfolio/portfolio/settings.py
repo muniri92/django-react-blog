@@ -28,7 +28,7 @@ SECRET_KEY = ')vk2mr7k_+3!2i=e22c#rhw2f6q753)6w3m5l(_14ciuvujx)p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'http://localhost:8080/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -61,7 +61,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ORIGIN_WHITELIST = (
     '*',
-    'http://localhost:8080/'
 )
 
 ROOT_URLCONF = 'portfolio.urls'
